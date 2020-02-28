@@ -17,4 +17,5 @@ for fv in $(find /var/www/html/fire/data_furg-fire-dataset -name '*.mp4'); do
 #    fi
 
     ./show_furg.py --video "$fv" --xml "$xml"
+    sleep 1
 done
