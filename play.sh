@@ -1,21 +1,13 @@
 #!/bin/bash
 
-sel=${1-3}
+DIR=/var/www/html/fire/data_furg-fire-dataset
 
-i=0
-for fv in $(find /var/www/html/fire/data_furg-fire-dataset -name '*.mp4'); do
+# ./show_furg.py --video $DIR/case2_car.mp4 --xml $DIR/case2_car.xml
 
-    dir=$(dirname "$fv")
-    bn=$(basename "$fv" '.mp4')
-    xml="$dir/$bn.xml"
+./show_furg.py --video $DIR/hand_held_camera_wildfire.mp4 --xml $DIR/hand_held_camera_wildfire.xml
+#./show_furg.py --video $DIR/hand_held_camera_wildfire.mp4 --xml ./filename.xml
 
-    i=$(( i + 1 ))
+cat filename.xml | xmllint --format - > filename2.xml
 
+# case2_car.mp4-bbox.avi
 
-#    if [ "$i" -ne "$sel" ]; then
-#        continue
-#    fi
-
-    ./show_furg.py --video "$fv" --xml "$xml"
-    sleep 1
-done
